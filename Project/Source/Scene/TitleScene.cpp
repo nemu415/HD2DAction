@@ -25,7 +25,7 @@ void TitleScene::Start()
 
 void TitleScene::Step()
 {
-	if (CheckHitKey(KEY_INPUT_Z))
+	if (CheckHitKey(KEY_INPUT_X))
 	{
 		SceneManager::GetInstance()->ChangeScene(STAY);
 	}
@@ -44,7 +44,7 @@ void TitleScene::Draw()
 
 	int alpha = (GetNowCount() / 10 % 20) * 12;
 
-	DrawString(780, 600, "Press Z", GetColor(255, 255, 255));
+	DrawString(700, 600, "Press X", GetColor(255, 255, 255));
 }
 
 void TitleScene::Fin()
