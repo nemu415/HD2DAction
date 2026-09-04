@@ -1,0 +1,6 @@
+﻿EnemyID,Name,Level,HP,Attack,Speed
+1,DeepOnes,1,20,5,0.05
+1,DeepOnes,2,30,8,0.05
+1,DeepOnes,3,40,11,0.05
+1,DeepOnes,4,55,14,0.05
+1,DeepOnes,6,90,20,0.05
