@@ -27,7 +27,7 @@ void TitleScene::Step()
 {
 	if (CheckHitKey(KEY_INPUT_Z))
 	{
-		SceneManager::GetInstance()->ChangeScene(Title);
+		SceneManager::GetInstance()->ChangeScene(STAY);
 	}
 }
 

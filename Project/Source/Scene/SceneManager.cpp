@@ -1,5 +1,6 @@
 #include "SceneManager.h"
 #include "TitleScene.h"
+#include "StayScene.h"
 #include "GameScene.h"
 #include "ClearScene.h"
 #include "DeadScene.h"
