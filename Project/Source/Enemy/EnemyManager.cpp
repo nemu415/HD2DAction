@@ -30,7 +30,7 @@ void EnemyManager::Init()
     m_SpawnTimer = 0.0f;
     m_SpawnInterval = 5.0f;
     m_KillCount = 0;
-    m_KillGoal = 5;
+    m_KillGoal = 1;
 
 }
 

@@ -25,7 +25,7 @@ void StayScene::Start()
 void StayScene::Step()
 {
 	// Zキーでステイシーンへ
-	if (CheckHitKey(KEY_INPUT_Z))
+	if (CheckHitKey(KEY_INPUT_X))
 	{
 		SceneManager::GetInstance()->ChangeScene(GAME);
 	}

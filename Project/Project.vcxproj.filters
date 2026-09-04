@@ -57,9 +57,6 @@
     <ClCompile Include="Source\Player\Player.cpp">
       <Filter>Source\Player</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Player\PlayerAttack.cpp">
-      <Filter>Source\Player</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Player\PlayerManager.cpp">
       <Filter>Source\Player</Filter>
     </ClCompile>

@@ -156,7 +156,6 @@
     <ClCompile Include="Source\Main.cpp" />
     <ClCompile Include="Source\MyMath\MyMath.cpp" />
     <ClCompile Include="Source\Player\Player.cpp" />
-    <ClCompile Include="Source\Player\PlayerAttack.cpp" />
     <ClCompile Include="Source\Player\PlayerManager.cpp" />
     <ClCompile Include="Source\Scene\ClearScene.cpp" />
     <ClCompile Include="Source\Scene\DeadScene.cpp" />

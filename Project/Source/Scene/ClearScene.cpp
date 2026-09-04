@@ -44,10 +44,10 @@ void ClearScene::Update()
 void ClearScene::Draw()
 {
 	SetFontSize(80);
-	DrawString(650, 300, "STAGECLEAR!!", GetColor(255, 255, 255));
-	SetFontSize(50);
-	DrawString(700, 200, "Xで次のステージに進む", GetColor(255, 255, 255));
-	DrawString(500, 200, "Zで一度ダンジョンを出る", GetColor(255, 255, 255));
+	DrawString(700, 300, "STAGECLEAR!!", GetColor(255, 255, 255));
+	SetFontSize(30);
+	DrawString(700, 400, "Xで次のステージに進む", GetColor(255, 255, 255));
+	DrawString(700, 500, "Zで一度ダンジョンを出る", GetColor(255, 255, 255));
 }
 
 void ClearScene::Fin()
