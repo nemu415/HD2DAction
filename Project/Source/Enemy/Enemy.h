@@ -11,6 +11,7 @@ struct EnemyStatus
     int hp;
     int attack;
     float speed;
+    int gold;
 };
 
 class Enemy
@@ -47,6 +48,7 @@ private:
     int m_MaxHP;
     int m_Attack;
     float m_Speed;
+    int m_Gold;
 
     // ˆÊ’uE‰æ‘œ‚È‚Ç
     VECTOR m_Pos;

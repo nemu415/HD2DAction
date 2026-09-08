@@ -98,6 +98,7 @@ void EnemyManager::Update()
                 {
                     m_KillCount++;
                     delete e;
+
                     return true;
                 }
                 return false;

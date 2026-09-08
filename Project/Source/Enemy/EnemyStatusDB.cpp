@@ -37,16 +37,18 @@ bool EnemyStatusDB::Load(const char* filename)
         EnemyStatus st;
         char name[64];
 
-        sscanf_s(buf, "%d,%[^,],%d,%d,%d,%f",
+        sscanf_s(buf, "%d,%[^,],%d,%d,%d,%f,%d",
             &st.enemyID,
             name, (unsigned)_countof(name),
             &st.level,
             &st.hp,
             &st.attack,
-            &st.speed
+            &st.speed,
+            &st.gold
         );
 
         st.name = name;
+
         m_List.push_back(st);
     }
 
@@ -71,6 +73,7 @@ EnemyStatus EnemyStatusDB::Get(int enemyID, int level)
     empty.hp = 1;
     empty.attack = 1;
     empty.speed = 1.0f;
+    empty.gold = 10;
 
     return empty;
 }

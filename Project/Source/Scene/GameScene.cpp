@@ -46,6 +46,10 @@ void GameScene::Init()
     EnemyManager::GetInstance()->Init();
     PlayerManager::GetInstance()->Init();
 	AttackManager::GetInstance()->Init();
+
+    SetUseZBuffer3D(TRUE);
+    SetWriteZBuffer3D(TRUE);
+
 }
 
 void GameScene::Load()
@@ -98,4 +102,7 @@ void GameScene::Fin()
     EnemyManager::GetInstance()->Fin();
     PlayerManager::GetInstance()->Fin();
     AttackManager::GetInstance()->Fin();
+
+    SetUseZBuffer3D(FALSE);
+    SetWriteZBuffer3D(FALSE);
 }

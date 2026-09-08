@@ -15,6 +15,7 @@ enum SceneType
 {
 	TITLE,
 	STAY,
+	SHOP,
 	GAME,
 	CLEAR,
 	DEAD,

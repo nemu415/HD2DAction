@@ -26,6 +26,7 @@ void Enemy::Init(int enemyID, int level)
     m_MaxHP = st.hp;
     m_Attack = st.attack;
     m_Speed = st.speed;
+    m_Gold = st.gold;
 
     // ‰EŒü‚«‰æ‘œ
     char fileR[128];
@@ -47,7 +48,7 @@ void Enemy::Init(int enemyID, int level)
         printfDx("¶‰æ‘œ“Ç‚İ‚İ¸”s: %s\n", fileL);
     }
 
-    m_Pos = VGet(5.0f, -0.5f, 0.0f);
+    m_Pos = VGet(5.0f, 1.0f, 0.0f);
 }
 
 void Enemy::Load()
@@ -81,10 +82,6 @@ void Enemy::Update()
         m_IsLeft = (n.x < 0);
     }
 
-    if (m_HP <= 0)
-    {
-
-    }
 }
 
 
@@ -92,7 +89,7 @@ void Enemy::Draw()
 {
     int handle = m_IsLeft ? m_GrHandleLeft : m_GrHandleRight;
 
-    DrawBillboard3D(VGet(m_Pos.x, m_Pos.y, m_Pos.z), 0.5f, 0.5f, 2.0f, 0.0f, handle, TRUE);
+    DrawBillboard3D(VGet(m_Pos.x, m_Pos.y, m_Pos.z), 1.0f, 1.0f, 2.0f, 0.0f, handle, TRUE);
 
     DrawFormatString(0, 50, GetColor(255, 255, 255), "Enemy‚ÌÀ•W[%f,%f,%f]", m_Pos.x, m_Pos.y, m_Pos.z);
 }

@@ -29,7 +29,10 @@ void StayScene::Step()
 	{
 		SceneManager::GetInstance()->ChangeScene(GAME);
 	}
-
+	if (CheckHitKey(KEY_INPUT_C))
+	{
+		SceneManager::GetInstance()->ChangeScene(SHOP);
+	}
 	if (CheckHitKey(KEY_INPUT_Z))
 	{
 		DxLib_End();
