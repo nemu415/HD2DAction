@@ -4,24 +4,19 @@
 class Gold
 {
 public:
-	Gold();
+	Gold(const VECTOR& pos, int amount);
 	~Gold();
 
     void Init();
-    void Load();
-    void Start();
     void Step();
-    void Update();
     void Draw();
-    void Fin();
 
-    void SetPos(const VECTOR& pos) { m_Pos = pos; }
-    VECTOR GetPos() const { return m_Pos; }
+    bool IsDead() const { return m_IsDead; }
+
 private:
-
     VECTOR m_Pos;
-    int m_GrHandleRight;
-    int m_GrHandleLeft;
-    bool m_IsLeft;
-
+    float m_Speed;
+    int m_Amount;
+    int m_Handle;
+    bool m_IsDead;
 };

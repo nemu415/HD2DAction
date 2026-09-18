@@ -48,7 +48,7 @@ void Enemy::Init(int enemyID, int level)
         printfDx("ç∂âÊëúì«Ç›çûÇ›é∏îs: %s\n", fileL);
     }
 
-    m_Pos = VGet(5.0f, 1.0f, 0.0f);
+    m_Pos = VGet(5.0f, -0.5f, 0.0f);
 }
 
 void Enemy::Load()
@@ -89,9 +89,8 @@ void Enemy::Draw()
 {
     int handle = m_IsLeft ? m_GrHandleLeft : m_GrHandleRight;
 
-    DrawBillboard3D(VGet(m_Pos.x, m_Pos.y, m_Pos.z), 1.0f, 1.0f, 2.0f, 0.0f, handle, TRUE);
+    DrawBillboard3D(VGet(m_Pos.x, m_Pos.y, m_Pos.z), 0.5f, 0.5f, 2.0f, 0.0f, handle, TRUE);
 
-    DrawFormatString(0, 50, GetColor(255, 255, 255), "EnemyÇÃç¿ïW[%f,%f,%f]", m_Pos.x, m_Pos.y, m_Pos.z);
 }
 
 void Enemy::Fin()

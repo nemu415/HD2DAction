@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "../Gold/GoldManager.h"
 #include "../Attack/AttackManager.h"
 
 Player::Player()
@@ -19,6 +20,8 @@ void Player::Init()
     m_Pos = VGet(0, 0, 0);
     m_Speed = 0.1f;
     m_HP = 100;
+
+    m_Gold = GoldData::GetInstance()->GetGold();
 }
 
 void Player::Load()
@@ -28,7 +31,6 @@ void Player::Load()
     m_GrHandle[1] = LoadGraph("Data/Player/Player1(1).png");
     m_GrHandle[2] = LoadGraph("Data/Player/Player2.png");
     m_GrHandle[3] = LoadGraph("Data/Player/Player2(1).png");
-
     m_AnimIndex = 0;
     m_AnimTimer = 0;
 }
@@ -66,7 +68,6 @@ void Player::Draw()
 
     DrawBillboard3D(VGet(m_Pos.x, m_Pos.y, m_Pos.z),0.5f,0.5f,2.0f,0.0f,handle,TRUE);
 
-    DrawFormatString(0, 10, GetColor(255, 255, 255), "Plyer‚ÌÀ•W[%f,%f,%f]", m_Pos.x, m_Pos.y, m_Pos.z);
 }
 
 
@@ -136,4 +137,10 @@ void Player::UpdateAnimation()
         m_AnimIndex = 0;
         m_AnimTimer = 0;
     }
+}
+
+void Player::AddGold(int g)
+{
+    m_Gold += g;
+    GoldData::GetInstance()->SetGold(m_Gold);
 }

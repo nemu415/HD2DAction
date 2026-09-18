@@ -1,6 +1,6 @@
 #include "Floor.h"
 
-#define DEFAULT_POS VGet(0.0f, -1.25f, 0.0f)
+#define DEFAULT_POS VGet(0.0f, -1.5f, 0.0f)
 
 
 Floor::Floor()

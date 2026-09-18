@@ -2,6 +2,7 @@
 #include "Enemy.h"
 #include "../Player/PlayerManager.h"
 #include "../Attack/AttackManager.h"
+#include "../Gold/GoldManager.h"
 #include "../Scene/SceneManager.h"
 #include "../Scene/ClearScene.h"
 #include "DxLib.h"
@@ -30,7 +31,7 @@ void EnemyManager::Init()
     m_SpawnTimer = 0.0f;
     m_SpawnInterval = 5.0f;
     m_KillCount = 0;
-    m_KillGoal = 1;
+    m_KillGoal = 5;
 
 }
 
@@ -96,6 +97,7 @@ void EnemyManager::Update()
             {
                 if (e->IsDead())
                 {
+                    GoldManager::GetInstance()->AddGold(e->GetPos(), 10);
                     m_KillCount++;
                     delete e;
 

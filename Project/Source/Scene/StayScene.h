@@ -15,4 +15,8 @@ public:
 	void Update() override;
 	void Draw() override;
 	void Fin() override;
+
+private:
+	int m_GoldIcon;
+
 };

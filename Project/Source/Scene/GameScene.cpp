@@ -6,6 +6,8 @@
 #include "../Attack/AttackManager.h"
 #include "../Enemy/EnemyManager.h"
 #include "../Enemy/EnemyStatusDB.h"
+#include "../Gold/GoldManager.h"
+#include "../Gold/GoldData.h"
 #include "../Camera/CameraManager.h"
 #include "../Collision/CollisionManager.h"
 
@@ -59,6 +61,7 @@ void GameScene::Load()
     EnemyManager::GetInstance()->Load();
     PlayerManager::GetInstance()->Load();
     AttackManager::GetInstance()->Load();
+    m_GoldIcon = LoadGraph("Data/Gold/Gold.png");
 }
 
 void GameScene::Start()
@@ -74,6 +77,7 @@ void GameScene::Step()
     CameraManager::GetInstance()->Step();
 	FloorManager::GetInstance()->Step();
     EnemyManager::GetInstance()->Step();
+    GoldManager::GetInstance()->Step();
     PlayerManager::GetInstance()->Step();
     AttackManager::GetInstance()->Step();
 }
@@ -91,8 +95,13 @@ void GameScene::Draw()
     CameraManager::GetInstance()->Draw();
     FloorManager::GetInstance()->Draw();
     EnemyManager::GetInstance()->Draw();
+    GoldManager::GetInstance()->Draw();
     PlayerManager::GetInstance()->Draw();
     AttackManager::GetInstance()->Draw();
+    int gold = GoldData::GetInstance()->GetGold();
+    DrawGraph(20, 30, m_GoldIcon, TRUE);
+    DrawFormatString(80, 48, GetColor(255, 255, 0), "%d", gold);
+
 }
 
 void GameScene::Fin()

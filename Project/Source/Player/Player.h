@@ -1,5 +1,6 @@
 #pragma once
 #include "DxLib.h"
+#include "../Gold/GoldData.h"
 #include "../Attack/DefultAttack.h"
 
 class Player
@@ -21,6 +22,8 @@ public:
     VECTOR GetPos() { return m_Pos; }
     VECTOR GetForward() { return m_Forward; }
     bool IsLeft() const { return m_IsLeft; }
+    void AddGold(int g);
+    int GetGold() const { return m_Gold; }
 
 private:
     void UpdateInput();          // ëÄçÏì¸óÕ
@@ -36,6 +39,8 @@ private:
     VECTOR m_Rot;
     VECTOR m_Forward;
     VECTOR m_Move;
+    int m_Gold;
+    int m_GoldIcon;
     float m_Speed;
     int m_HP;
     int TransFlag;

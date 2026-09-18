@@ -31,6 +31,9 @@
     <Filter Include="Source\Gold">
       <UniqueIdentifier>{26e01113-e7b0-4ca5-b1d1-ff1964cf65c8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Skill">
+      <UniqueIdentifier>{0e7492a8-aa33-4f92-a8bf-a4e977883339}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Main.cpp">
@@ -108,13 +111,13 @@
     <ClCompile Include="Source\Collision\CollisionSphere.cpp">
       <Filter>Source\Collision</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Attack\ExDefultAttack.cpp">
-      <Filter>Source\Attack</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Scene\ShopScene.cpp">
       <Filter>Source\Scene</Filter>
     </ClCompile>
     <ClCompile Include="Source\Gold\Gold.cpp">
+      <Filter>Source\Gold</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Gold\GoldManager.cpp">
       <Filter>Source\Gold</Filter>
     </ClCompile>
   </ItemGroup>
@@ -194,14 +197,20 @@
     <ClInclude Include="Source\Collision\CollisionSphere.h">
       <Filter>Source\Collision</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Attack\ExDefultAttack.h">
-      <Filter>Source\Attack</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Scene\ShopScene.h">
       <Filter>Source\Scene</Filter>
     </ClInclude>
     <ClInclude Include="Source\Gold\Gold.h">
       <Filter>Source\Gold</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Gold\GoldManager.h">
+      <Filter>Source\Gold</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Gold\GoldData.h">
+      <Filter>Source\Gold</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Skill\SkillData.h">
+      <Filter>Source\Skill</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
