@@ -1,5 +1,6 @@
 #include "DxLib.h"
 #include "ClearScene.h"
+#include "../Input/Input.h"
 #include "../Scene/SceneManager.h"
 
 ClearScene::ClearScene() : SceneBase()
@@ -25,13 +26,13 @@ void ClearScene::Start()
 void ClearScene::Step()
 {
 	// Xキーでゲームシーンへ
-	if (CheckHitKey(KEY_INPUT_X))
+	if (Input::IsTrigger(Input::Key::X))
 	{
 		SceneManager::GetInstance()->ChangeScene(GAME);
 	}
 
 	// Zキーでステイシーンへ
-	if (CheckHitKey(KEY_INPUT_Z))
+	if (Input::IsTrigger(Input::Key::Z))
 	{
 		SceneManager::GetInstance()->ChangeScene(STAY);
 	}
@@ -39,10 +40,12 @@ void ClearScene::Step()
 
 void ClearScene::Update()
 {
+	Input::Update;
 }
 
 void ClearScene::Draw()
 {
+	//UI表示
 	SetFontSize(80);
 	DrawString(600, 300, "STAGECLEAR!!", GetColor(255, 255, 255));
 	SetFontSize(30);

@@ -1,5 +1,6 @@
 #include "DxLib.h"
 #include "StayScene.h"
+#include "../Input/Input.h"
 #include "../Scene/SceneManager.h"
 #include "../Gold/GoldData.h"
 StayScene::StayScene() : SceneBase()
@@ -26,22 +27,23 @@ void StayScene::Start()
 void StayScene::Step()
 {
 	// Zキーでステイシーンへ
-	if (CheckHitKey(KEY_INPUT_X))
+	if (Input::IsTrigger(Input::Key::X))
 	{
 		SceneManager::GetInstance()->ChangeScene(GAME);
 	}
-	if (CheckHitKey(KEY_INPUT_C))
+	if (Input::IsTrigger(Input::Key::C))
 	{
 		SceneManager::GetInstance()->ChangeScene(SHOP);
 	}
-	if (CheckHitKey(KEY_INPUT_Z))
+	if (Input::IsTrigger(Input::Key::Z))
 	{
-		DxLib_End();
+		DxLib_End;
 	}
 }
 
 void StayScene::Update()
 {
+	Input::Update();
 }
 
 void StayScene::Draw()

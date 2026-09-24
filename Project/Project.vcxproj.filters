@@ -34,6 +34,9 @@
     <Filter Include="Source\Skill">
       <UniqueIdentifier>{0e7492a8-aa33-4f92-a8bf-a4e977883339}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Input">
+      <UniqueIdentifier>{0cd04e9c-7fd0-4784-a203-78ed1f77eb05}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Main.cpp">
@@ -119,6 +122,9 @@
     </ClCompile>
     <ClCompile Include="Source\Gold\GoldManager.cpp">
       <Filter>Source\Gold</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Input\Input.cpp">
+      <Filter>Source\Input</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -211,6 +217,9 @@
     </ClInclude>
     <ClInclude Include="Source\Skill\SkillData.h">
       <Filter>Source\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Input\Input.h">
+      <Filter>Source\Input</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

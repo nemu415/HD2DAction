@@ -1,5 +1,6 @@
 #include "DxLib.h"
 #include "TitleScene.h"
+#include "../Input/Input.h"
 #include "../Scene/SceneManager.h"
 
 
@@ -25,7 +26,7 @@ void TitleScene::Start()
 
 void TitleScene::Step()
 {
-	if (CheckHitKey(KEY_INPUT_X))
+	if (Input::IsTrigger(Input::Key::X))
 	{
 		SceneManager::GetInstance()->ChangeScene(STAY);
 	}
@@ -33,6 +34,7 @@ void TitleScene::Step()
 
 void TitleScene::Update()
 {
+	Input::Update();
 }
 
 void TitleScene::Draw()

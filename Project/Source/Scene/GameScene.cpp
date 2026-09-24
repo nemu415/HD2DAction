@@ -1,8 +1,10 @@
 #include "DxLib.h"
 #include "GameScene.h"
+#include "../Input/Input.h"
 #include "../Scene/SceneManager.h"
 #include "../Floor/FloorManager.h"
 #include "../Player/PlayerManager.h"
+#include "../Skill/SkillData.h"
 #include "../Attack/AttackManager.h"
 #include "../Enemy/EnemyManager.h"
 #include "../Enemy/EnemyStatusDB.h"
@@ -52,6 +54,27 @@ void GameScene::Init()
     SetUseZBuffer3D(TRUE);
     SetWriteZBuffer3D(TRUE);
 
+    auto skills = SkillData::GetInstance()->GetSkills();
+
+    for (int skill : skills)
+    {
+        if (skill == 1)
+        {
+        }
+        else if (skill == 2)
+        {
+        }
+        else if (skill == 3)
+        {
+        }
+        else if (skill == 4)
+        {
+        }
+        else if (skill == 5)
+        {
+        }
+    }
+
 }
 
 void GameScene::Load()
@@ -78,6 +101,7 @@ void GameScene::Step()
 	FloorManager::GetInstance()->Step();
     EnemyManager::GetInstance()->Step();
     GoldManager::GetInstance()->Step();
+    Input::Update();
     PlayerManager::GetInstance()->Step();
     AttackManager::GetInstance()->Step();
 }

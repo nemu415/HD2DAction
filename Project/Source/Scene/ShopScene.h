@@ -16,7 +16,12 @@ public:
 	void Draw() override;
 	void Fin() override;
 
+	void BuySkill(int index);
 private:
 	int m_GoldIcon;
+	int m_SkillImage[5];
+	int m_SkillPrice[5] = { 150, 100, 50, 50, 50 };
+	int m_SelectIndex;
+
 
 };

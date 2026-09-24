@@ -1,5 +1,6 @@
 #include "DxLib.h"
 #include "DeadScene.h"
+#include "../Input/Input.h"
 #include "../Scene/SceneManager.h"
 
 DeadScene::DeadScene() : SceneBase()
@@ -24,7 +25,7 @@ void DeadScene::Start()
 
 void DeadScene::Step()
 {
-	if (CheckHitKey(KEY_INPUT_Z))
+	if (Input::IsTrigger(Input::Key::Z))
 	{
 		SceneManager::GetInstance()->ChangeScene(STAY);
 	}
@@ -32,6 +33,7 @@ void DeadScene::Step()
 
 void DeadScene::Update()
 {
+	Input::Update();
 }
 
 void DeadScene::Draw()
