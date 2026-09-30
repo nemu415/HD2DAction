@@ -15,6 +15,12 @@ public:
 	void Update() override;
 	void Draw() override;
 	void Fin() override;
+
+private:
+	int m_Background;
+	int m_TitleFont;
+	int m_PressFont;
+
 };
 
 

@@ -18,6 +18,14 @@ void StayScene::Init()
 void StayScene::Load()
 {
 	m_GoldIcon = LoadGraph("Data/Gold/Gold.png");
+	m_Background = LoadGraph("Data/Background/Stay.jpg");
+
+	m_PressFont = CreateFontToHandle(
+		"DotGothic16",
+		50,
+		4,
+		DX_FONTTYPE_ANTIALIASING
+	);
 }
 
 void StayScene::Start()
@@ -48,14 +56,15 @@ void StayScene::Update()
 
 void StayScene::Draw()
 {
-	SetFontSize(35);
-	DrawString(600, 300, "Xでダンジョンに入る", GetColor(255, 255, 255));
-	DrawString(600, 400, "Cでショップに入る", GetColor(255, 255, 255));
-	DrawString(600, 500, "Zでゲームを終了する", GetColor(255, 255, 255));
+	DrawGraph(0, 0, m_Background, TRUE);
+
+	DrawStringToHandle(600, 300, "Xでダンジョンに入る", GetColor(255, 255, 255), m_PressFont);
+	DrawStringToHandle(600, 400, "Cでショップに入る", GetColor(255, 255, 255), m_PressFont);
+	DrawStringToHandle(600, 500, "Zでゲームを終了する", GetColor(255, 255, 255), m_PressFont);
 
 	int gold = GoldData::GetInstance()->GetGold();
 	DrawGraph(20, 30, m_GoldIcon, TRUE);
-	DrawFormatString(80, 48, GetColor(255, 255, 0), "%d", gold);
+	DrawFormatStringToHandle(80, 35, GetColor(255, 255, 0), m_PressFont, "%d", gold);
 }
 
 void StayScene::Fin()

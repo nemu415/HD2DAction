@@ -17,6 +17,21 @@ void DeadScene::Init()
 
 void DeadScene::Load()
 {
+	m_Background = LoadGraph("Data/Background/Dead.jpg");
+
+	m_TitleFont = CreateFontToHandle(
+		"DotGothic16",
+		100,
+		4,
+		DX_FONTTYPE_ANTIALIASING
+	);
+
+	m_PressFont = CreateFontToHandle(
+		"DotGothic16",
+		50,
+		4,
+		DX_FONTTYPE_ANTIALIASING
+	);
 }
 
 void DeadScene::Start()
@@ -38,14 +53,12 @@ void DeadScene::Update()
 
 void DeadScene::Draw()
 {
-	SetFontSize(80);
-	DrawString(600, 250, "GameOver", GetColor(255, 0, 0));
+	DrawGraph(0, 0, m_Background, TRUE);
 
-	SetFontSize(32);
 
-	int alpha = (GetNowCount() / 10 % 20) * 12;
+	DrawStringToHandle(600, 250, "GameOver", GetColor(255, 0, 0), m_TitleFont);
 
-	DrawString(700, 600, "Retry", GetColor(255, 255, 255));
+	DrawStringToHandle(700, 600, "èâÇﬂÇ©ÇÁénÇﬂÇÈ", GetColor(255, 255, 255), m_PressFont);
 }
 
 void DeadScene::Fin()

@@ -53,5 +53,6 @@ private:
     float m_SpawnInterval;
     int m_KillCount;
     int m_KillGoal;
-
+    float m_StayTimer;
+    int m_EnemyFont;
 };

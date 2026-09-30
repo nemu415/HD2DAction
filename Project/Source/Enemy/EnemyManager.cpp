@@ -31,7 +31,8 @@ void EnemyManager::Init()
     m_SpawnTimer = 0.0f;
     m_SpawnInterval = 5.0f;
     m_KillCount = 0;
-    m_KillGoal = 5;
+    m_KillGoal = 1;
+    m_StayTimer = 0.0f;
 
 }
 
@@ -39,6 +40,13 @@ void EnemyManager::Load()
 {
     for (auto& e : m_Enemies)
         e->Load();
+    
+    m_EnemyFont = CreateFontToHandle(
+        "DotGothic16",
+        30,
+        4,
+        DX_FONTTYPE_ANTIALIASING
+    );
 }
 
 void EnemyManager::Start()
@@ -88,7 +96,6 @@ void EnemyManager::Update()
 {
     for (auto& e : m_Enemies)
         e->Update();
-
     m_Enemies.erase(
         std::remove_if(
             m_Enemies.begin(),
@@ -111,7 +118,14 @@ void EnemyManager::Update()
 
     if (m_KillCount >= m_KillGoal)
     {
-        SceneManager::GetInstance()->ChangeScene(SceneType::CLEAR);
+
+        DrawStringToHandle(400, 30, "目標討伐数に到達、間もなく休憩エリアに移動します", GetColor(255, 255, 255), m_EnemyFont);
+        m_StayTimer += 1.0f / 60.0f;
+        
+        if (m_StayTimer > 5.0f)
+        {
+            SceneManager::GetInstance()->ChangeScene(SceneType::CLEAR);
+        }
     }
 
 }

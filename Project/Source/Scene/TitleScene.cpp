@@ -18,6 +18,23 @@ void TitleScene::Init()
 
 void TitleScene::Load()
 {
+	m_Background = LoadGraph("Data/Background/Title.jpg");
+
+	m_TitleFont = CreateFontToHandle(
+		"DotGothic16",
+		100,
+		4,
+		DX_FONTTYPE_ANTIALIASING
+	);
+
+
+	m_PressFont = CreateFontToHandle(
+		"DotGothic16",
+		50,
+		4,
+		DX_FONTTYPE_ANTIALIASING
+	);
+
 }
 
 void TitleScene::Start()
@@ -39,16 +56,15 @@ void TitleScene::Update()
 
 void TitleScene::Draw()
 {
-	SetFontSize(80);
-	DrawString(450, 250, "ダンジョンライク", GetColor(255, 0, 0));
+	DrawGraph(0, 0, m_Background, TRUE);
 
-	SetFontSize(32);
+	DrawStringToHandle(450, 250, "ダンジョンライク", GetColor(255, 0, 0), m_TitleFont);
 
-	int alpha = (GetNowCount() / 10 % 20) * 12;
-
-	DrawString(700, 600, "Press X", GetColor(255, 255, 255));
+	DrawStringToHandle(700, 600, "Press X", GetColor(255, 255, 255), m_PressFont);
 }
 
 void TitleScene::Fin()
 {
+	DeleteFontToHandle(m_TitleFont);
+	DeleteFontToHandle(m_PressFont);
 }

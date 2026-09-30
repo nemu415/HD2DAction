@@ -18,5 +18,6 @@ public:
 
 private:
 	int m_GoldIcon;
-
+	int m_Background;
+	int m_PressFont;
 };

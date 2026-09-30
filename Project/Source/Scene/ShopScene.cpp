@@ -20,6 +20,7 @@ void ShopScene::Init()
 
 void ShopScene::Load()
 {
+	m_Background = LoadGraph("Data/Background/Shop.jpg");
 	m_GoldIcon = LoadGraph("Data/Gold/Gold.png");
 	m_SkillImage[0] = LoadGraph("Data/Skill/_Skill1.png");
 	m_SkillImage[1] = LoadGraph("Data/Skill/_Skill2.png");
@@ -28,6 +29,21 @@ void ShopScene::Load()
 	m_SkillImage[4] = LoadGraph("Data/Skill/_Skill5.png");
 
 	m_SelectIndex = 0;
+
+	m_ShopFont = CreateFontToHandle(
+		"DotGothic16",
+		32,
+		4,
+		DX_FONTTYPE_ANTIALIASING
+	);
+
+
+	m_PressFont = CreateFontToHandle(
+		"DotGothic16",
+		50,
+		4,
+		DX_FONTTYPE_ANTIALIASING
+	);
 }
 
 void ShopScene::Start()
@@ -67,13 +83,14 @@ void ShopScene::Update()
 
 void ShopScene::Draw()
 {
-	SetFontSize(35);
-	DrawString(550, 650, "A D で選択 / Space で購入", GetColor(255, 255, 255));
-	DrawString(600, 700, "Zでショップから出る", GetColor(255, 255, 255));
+	DrawGraph(0, 0, m_Background, TRUE);
+
+	DrawStringToHandle(550, 650, "A D で選択 / Space で購入", GetColor(255, 255, 255), m_PressFont);
+	DrawStringToHandle(600, 700, "Zでショップから出る", GetColor(255, 255, 255), m_PressFont);
 
 	int gold = GoldData::GetInstance()->GetGold();
 	DrawGraph(20, 30, m_GoldIcon, TRUE);
-	DrawFormatString(80, 48, GetColor(255, 255, 0), "%d", gold);
+	DrawFormatStringToHandle(80, 35, GetColor(255, 255, 0), m_PressFont, "%d", gold);
 
 	int startX = 150;
 	int y = 200;
@@ -88,11 +105,11 @@ void ShopScene::Draw()
 		}
 
 		DrawGraph(x, y, m_SkillImage[i], TRUE);
-		DrawFormatString(x, y + 270, GetColor(255, 255, 255), "%dG", m_SkillPrice[i]);
+		DrawFormatStringToHandle(x, y + 270, GetColor(255, 255, 255), m_ShopFont, "%dG", m_SkillPrice[i]);
 
 		if (SkillData::GetInstance()->HasSkill(i))
 		{
-			DrawString(x, y + 280, "購入済み", GetColor(0, 255, 0));
+			DrawStringToHandle(x, y + 290, "購入済み", GetColor(0, 255, 0), m_ShopFont);
 		}
 	}
 }

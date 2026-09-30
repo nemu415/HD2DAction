@@ -85,6 +85,14 @@ void GameScene::Load()
     PlayerManager::GetInstance()->Load();
     AttackManager::GetInstance()->Load();
     m_GoldIcon = LoadGraph("Data/Gold/Gold.png");
+    m_Background = LoadGraph("Data/Background/Game.jpg");
+
+    m_PressFont = CreateFontToHandle(
+        "DotGothic16",
+        50,
+        4,
+        DX_FONTTYPE_ANTIALIASING
+    );
 }
 
 void GameScene::Start()
@@ -116,6 +124,8 @@ void GameScene::Update()
 
 void GameScene::Draw()
 {   
+    DrawGraph(0, 0, m_Background, TRUE);
+
     CameraManager::GetInstance()->Draw();
     FloorManager::GetInstance()->Draw();
     EnemyManager::GetInstance()->Draw();
@@ -124,7 +134,7 @@ void GameScene::Draw()
     AttackManager::GetInstance()->Draw();
     int gold = GoldData::GetInstance()->GetGold();
     DrawGraph(20, 30, m_GoldIcon, TRUE);
-    DrawFormatString(80, 48, GetColor(255, 255, 0), "%d", gold);
+    DrawFormatStringToHandle(80, 35, GetColor(255, 255, 0), m_PressFont, "%d", gold);
 
 }
 

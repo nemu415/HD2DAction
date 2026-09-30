@@ -22,6 +22,7 @@ private:
 	int m_SkillImage[5];
 	int m_SkillPrice[5] = { 150, 100, 50, 50, 50 };
 	int m_SelectIndex;
-
-
+	int m_Background;
+	int m_ShopFont;
+	int m_PressFont;
 };

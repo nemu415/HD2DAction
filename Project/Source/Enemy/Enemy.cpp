@@ -38,16 +38,6 @@ void Enemy::Init(int enemyID, int level)
     sprintf_s(fileL, "Data/Enemy/%s_L.png", st.name.c_str());
     m_GrHandleLeft = LoadGraph(fileL);
 
-
-    if (m_GrHandleRight == -1)
-    {
-        printfDx("‰E‰æ‘œ“Ç‚İ‚İ¸”s: %s\n", fileR);
-    }
-    if (m_GrHandleLeft == -1)
-    {
-        printfDx("¶‰æ‘œ“Ç‚İ‚İ¸”s: %s\n", fileL);
-    }
-
     m_Pos = VGet(5.0f, -0.5f, 0.0f);
 }
 
