@@ -37,8 +37,6 @@ void Enemy::Init(int enemyID, int level)
     char fileL[128];
     sprintf_s(fileL, "Data/Enemy/%s_L.png", st.name.c_str());
     m_GrHandleLeft = LoadGraph(fileL);
-
-    m_Pos = VGet(5.0f, -0.5f, 0.0f);
 }
 
 void Enemy::Load()

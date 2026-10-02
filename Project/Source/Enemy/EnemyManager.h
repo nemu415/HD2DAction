@@ -41,8 +41,8 @@ public:
     void Update();
     void Draw();
     void Fin();
-    void SpawnEnemy();
-public:
+    void SpawnRandomEnemy();
+    void SpawnEnemy(int enemyID);
     void CreateEnemy(int enemyID, int level);
     const std::vector<Enemy*>& GetEnemies() const { return m_Enemies; }
 

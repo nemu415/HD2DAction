@@ -17,6 +17,7 @@ namespace Input
         X,
         C,
         V,
+        F12,
         Count
     };
 

@@ -3,6 +3,7 @@
 #include "StayScene.h"
 #include "ShopScene.h"
 #include "GameScene.h"
+#include "BossScene.h"
 #include "ClearScene.h"
 #include "DeadScene.h"
 
@@ -116,6 +117,7 @@ void SceneManager::CreateScene(SceneType type)
 	case STAY: m_NowScene = new StayScene; break;
 	case SHOP: m_NowScene = new ShopScene; break;
 	case GAME: m_NowScene = new GameScene; break;
+	case BOSS: m_NowScene = new BossScene; break;
 	case CLEAR: m_NowScene = new ClearScene; break;
 	case DEAD: m_NowScene = new DeadScene; break;
 	}

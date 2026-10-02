@@ -126,6 +126,9 @@
     <ClCompile Include="Source\Input\Input.cpp">
       <Filter>Source\Input</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Scene\BossScene.cpp">
+      <Filter>Source\Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Scene\ClearScene.h">
@@ -220,6 +223,9 @@
     </ClInclude>
     <ClInclude Include="Source\Input\Input.h">
       <Filter>Source\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Scene\BossScene.h">
+      <Filter>Source\Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

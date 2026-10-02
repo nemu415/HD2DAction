@@ -1,5 +1,5 @@
 #include "DxLib.h"
-#include "GameScene.h"
+#include "BossScene.h"
 #include "SceneManager.h"
 #include "../Input/Input.h"
 #include "../Floor/FloorManager.h"
@@ -11,19 +11,18 @@
 #include "../Gold/GoldManager.h"
 #include "../Gold/GoldData.h"
 #include "../Camera/CameraManager.h"
-#include "../Camera/Camera.h"
 #include "../Collision/CollisionManager.h"
-int GameScene::m_StageLevel = 1;
+int BossScene::m_StageLevel = 1;
 
-GameScene::GameScene() : SceneBase()
+BossScene::BossScene() : SceneBase()
 {
 }
 
-GameScene::~GameScene()
+BossScene::~BossScene()
 {
 }
 
-void GameScene::Init()
+void BossScene::Init()
 {
     FloorManager::CreateInstance();
     FloorManager* FloorManager = FloorManager::GetInstance();
@@ -50,7 +49,7 @@ void GameScene::Init()
     FloorManager::GetInstance()->Init();
     EnemyManager::GetInstance()->Init();
     PlayerManager::GetInstance()->Init();
-	AttackManager::GetInstance()->Init();
+    AttackManager::GetInstance()->Init();
 
     SetUseZBuffer3D(TRUE);
     SetWriteZBuffer3D(TRUE);
@@ -78,15 +77,16 @@ void GameScene::Init()
 
 }
 
-void GameScene::Load()
-{   
+void BossScene::Load()
+{
     CameraManager::GetInstance()->Load();
     FloorManager::GetInstance()->Load();
     EnemyManager::GetInstance()->Load();
     PlayerManager::GetInstance()->Load();
     AttackManager::GetInstance()->Load();
     m_GoldIcon = LoadGraph("Data/Gold/Gold.png");
-    m_Background = LoadGraph("Data/Background/Game.jpg");
+    m_Background = LoadGraph("Data/Background/Boss.jpg");
+
     m_PressFont = CreateFontToHandle(
         "DotGothic16",
         50,
@@ -95,7 +95,7 @@ void GameScene::Load()
     );
 }
 
-void GameScene::Start()
+void BossScene::Start()
 {
     CameraManager::GetInstance()->Start();
     FloorManager::GetInstance()->Start();
@@ -103,24 +103,18 @@ void GameScene::Start()
     PlayerManager::GetInstance()->Start();
 }
 
-void GameScene::Step()
+void BossScene::Step()
 {
-    if (m_StageLevel % 5 == 0)
-    {
-        SceneManager::GetInstance()->ChangeScene(BOSS);
-        return;
-    }
-
-    Input::Update();
     CameraManager::GetInstance()->Step();
-	FloorManager::GetInstance()->Step();
+    FloorManager::GetInstance()->Step();
     EnemyManager::GetInstance()->Step();
     GoldManager::GetInstance()->Step();
+    Input::Update();
     PlayerManager::GetInstance()->Step();
     AttackManager::GetInstance()->Step();
 }
 
-void GameScene::Update()
+void BossScene::Update()
 {
     CameraManager::GetInstance()->Update();
     FloorManager::GetInstance()->Update();
@@ -128,8 +122,8 @@ void GameScene::Update()
     PlayerManager::GetInstance()->Update();
 }
 
-void GameScene::Draw()
-{   
+void BossScene::Draw()
+{
     DrawGraph(0, 0, m_Background, TRUE);
 
     CameraManager::GetInstance()->Draw();
@@ -144,7 +138,7 @@ void GameScene::Draw()
 
 }
 
-void GameScene::Fin()
+void BossScene::Fin()
 {
     CameraManager::GetInstance()->Fin();
     FloorManager::GetInstance()->Fin();

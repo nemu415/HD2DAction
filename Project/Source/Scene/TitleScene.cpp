@@ -1,7 +1,7 @@
 #include "DxLib.h"
 #include "TitleScene.h"
+#include "SceneManager.h"
 #include "../Input/Input.h"
-#include "../Scene/SceneManager.h"
 
 
 TitleScene::TitleScene() : SceneBase()

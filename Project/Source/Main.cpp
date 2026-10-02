@@ -1,4 +1,5 @@
 #include "DxLib.h"
+#include "Input/Input.h"
 #include "Enemy/EnemyStatusDB.h"	
 #include "Collision/CollisionManager.h"
 #include "Scene/SceneManager.h"
@@ -16,7 +17,10 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
 	// 画面解像度の設定
 	SetGraphMode(SCREEN_WIDTH, SCREEN_HEIGHT, 32);
 
-	// ★ 画面モード変更時にグラフィックをリセットしない
+	// フルスクリーン時に画質を落とさない
+	SetFullScreenScalingMode(DX_FSSCALINGMODE_NEAREST);
+
+	// 画面モード変更時にグラフィックをリセットしない
 	SetChangeScreenModeGraphicsSystemResetFlag(FALSE);
 	if (DxLib_Init() == -1)		// ＤＸライブラリ初期化処理
 	{
@@ -39,6 +43,14 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
 	while (ProcessMessage() >= 0)
 	{
 		static bool isFullScreen = false;
+		
+		if (Input::IsTrigger(Input::Key::F12))
+		{
+			isFullScreen = !isFullScreen;
+			ChangeWindowMode(!isFullScreen);
+			SetGraphMode(SCREEN_WIDTH, SCREEN_HEIGHT, 32);
+			SetChangeScreenModeGraphicsSystemResetFlag(FALSE);
+		}
 
 
 		// 1ミリ秒待機すると処理が安定する

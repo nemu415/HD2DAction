@@ -17,6 +17,7 @@ enum SceneType
 	STAY,
 	SHOP,
 	GAME,
+	BOSS,
 	CLEAR,
 	DEAD,
 	SCENE_TYPE_NONE = -1

@@ -1,8 +1,8 @@
 #include "DxLib.h"
 #include "ShopScene.h"
+#include "SceneManager.h"
 #include "../Input/Input.h"
 #include "../Skill/SkillData.h"
-#include "../Scene/SceneManager.h"
 #include "../Gold/GoldData.h"
 
 
@@ -85,8 +85,8 @@ void ShopScene::Draw()
 {
 	DrawGraph(0, 0, m_Background, TRUE);
 
-	DrawStringToHandle(550, 650, "A D で選択 / Space で購入", GetColor(255, 255, 255), m_PressFont);
-	DrawStringToHandle(600, 700, "Zでショップから出る", GetColor(255, 255, 255), m_PressFont);
+	DrawStringToHandle(500, 650, "A D で選択 / Space で購入", GetColor(255, 255, 255), m_PressFont);
+	DrawStringToHandle(550, 700, "Zでショップから出る", GetColor(255, 255, 255), m_PressFont);
 
 	int gold = GoldData::GetInstance()->GetGold();
 	DrawGraph(20, 30, m_GoldIcon, TRUE);

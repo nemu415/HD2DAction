@@ -41,6 +41,7 @@ public:
 
 	void SetTargetPlayer(Player* player);
 
+
 private:
 	static CameraManager* m_Instance;
 

@@ -25,6 +25,7 @@ namespace Input
         case Key::X:     return KEY_INPUT_X;
         case Key::C:     return KEY_INPUT_C;
         case Key::V:     return KEY_INPUT_V;
+        case Key::F12:   return KEY_INPUT_F12;
         }
         return -1;
     }

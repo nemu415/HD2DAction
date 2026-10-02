@@ -1,4 +1,5 @@
 #include "EnemyStatusDB.h"
+#include "../Scene/GameScene.h"
 #include <cstdio>
 
 EnemyStatusDB* EnemyStatusDB::m_Instance = nullptr;
@@ -59,16 +60,32 @@ bool EnemyStatusDB::Load(const char* filename)
 
 EnemyStatus EnemyStatusDB::Get(int enemyID, int level)
 {
+    int realLevel = level + GameScene::m_StageLevel;
+
+    EnemyStatus* best = nullptr;
+
     for (auto& st : m_List)
     {
-        if (st.enemyID == enemyID && st.level == level)
-            return st;
+        if (st.enemyID == enemyID)
+        {
+            if (st.level == realLevel)
+                return st;
+
+            if (st.level <= realLevel)
+            {
+                if (!best || st.level > best->level)
+                    best = &st;
+            }
+        }
     }
+
+    if (best)
+        return *best;
 
     // 見つからないときはデフォルト
     EnemyStatus empty;
     empty.enemyID = enemyID;
-    empty.level = level;
+    empty.level = realLevel;
     empty.name = "Unknown";
     empty.hp = 1;
     empty.attack = 1;

@@ -4,6 +4,7 @@
 #include "../Attack/AttackManager.h"
 #include "../Gold/GoldManager.h"
 #include "../Scene/SceneManager.h"
+#include "../Scene/GameScene.h"
 #include "../Scene/ClearScene.h"
 #include "DxLib.h"
 
@@ -27,7 +28,9 @@ void EnemyManager::CreateEnemy(int enemyID, int level)
 void EnemyManager::Init()
 {
     for (auto& e : m_Enemies)
-        e->Init(e->GetID(), e->GetLevel());
+        delete e;
+    m_Enemies.clear();
+
     m_SpawnTimer = 0.0f;
     m_SpawnInterval = 5.0f;
     m_KillCount = 0;
@@ -64,7 +67,7 @@ void EnemyManager::Step()
 
     if (m_SpawnTimer >= m_SpawnInterval)
     {
-        SpawnEnemy();
+        SpawnRandomEnemy();
         m_SpawnTimer = 0.0f;
     }
 
@@ -118,8 +121,6 @@ void EnemyManager::Update()
 
     if (m_KillCount >= m_KillGoal)
     {
-
-        DrawStringToHandle(400, 30, "–Ú•W“¢”°”‚É“ž’BAŠÔ‚à‚È‚­‹xŒeƒGƒŠƒA‚ÉˆÚ“®‚µ‚Ü‚·", GetColor(255, 255, 255), m_EnemyFont);
         m_StayTimer += 1.0f / 60.0f;
         
         if (m_StayTimer > 5.0f)
@@ -134,6 +135,11 @@ void EnemyManager::Draw()
 {
     for (auto& e : m_Enemies)
         e->Draw();
+
+    if (m_KillCount >= m_KillGoal)
+    {
+        DrawStringToHandle(400, 30,"–Ú•W“¢”°”‚É“ž’BAŠÔ‚à‚È‚­‹xŒeƒGƒŠƒA‚ÉˆÚ“®‚µ‚Ü‚·",GetColor(255, 255, 255),m_EnemyFont);
+    }
 }
 
 void EnemyManager::Fin()
@@ -146,7 +152,7 @@ void EnemyManager::Fin()
     m_Enemies.clear();
 }
 
-void EnemyManager::SpawnEnemy()
+void EnemyManager::SpawnEnemy(int enemyID)
 {
     auto player = PlayerManager::GetInstance()->GetPlayer();
     VECTOR pPos = player->GetPos();
@@ -159,9 +165,26 @@ void EnemyManager::SpawnEnemy()
     pos.z = pPos.z + sinf(angle) * distance;
     pos.y = 0.0f;
 
-    // “G¶¬
     Enemy* e = new Enemy;
-    e->Init(1, 1);   // enemyID=1, level=1
+    e->Init(enemyID, 1);
     e->SetPos(pos);
     m_Enemies.push_back(e);
 }
+
+void EnemyManager::SpawnRandomEnemy()
+{
+    int stage = GameScene::m_StageLevel;
+
+    std::vector<int> pool;
+
+    // í‚Éo‚é“G
+    pool.push_back(1); // DeepOnes
+
+    if (stage >= 2)
+        pool.push_back(2); // Shoggoth
+
+    int enemyID = pool[rand() % pool.size()];
+
+    SpawnEnemy(enemyID);
+}
+

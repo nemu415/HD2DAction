@@ -1,7 +1,7 @@
 #include "DxLib.h"
 #include "DeadScene.h"
+#include "SceneManager.h"
 #include "../Input/Input.h"
-#include "../Scene/SceneManager.h"
 
 DeadScene::DeadScene() : SceneBase()
 {

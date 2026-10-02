@@ -1,7 +1,7 @@
 #include "DxLib.h"
 #include "StayScene.h"
+#include "SceneManager.h"
 #include "../Input/Input.h"
-#include "../Scene/SceneManager.h"
 #include "../Gold/GoldData.h"
 StayScene::StayScene() : SceneBase()
 {
