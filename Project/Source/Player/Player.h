@@ -3,6 +3,13 @@
 #include "../Gold/GoldData.h"
 #include "../Attack/DefultAttack.h"
 
+enum class State
+{
+    NORMAL,
+    DAMAGE,
+    DEAD
+};
+
 class Player
 {
 public:
@@ -22,8 +29,13 @@ public:
     VECTOR GetPos() { return m_Pos; }
     VECTOR GetForward() { return m_Forward; }
     bool IsLeft() const { return m_IsLeft; }
-    void AddGold(int g);
     int GetGold() const { return m_Gold; }
+
+public:
+    void AddGold(int g);
+    void OnHitEnemy(const VECTOR& enemyPos);
+    void DrawHP();
+    float m_HitRadius;
 
 private:
     void UpdateInput();          // ëÄçÏì¸óÕ
@@ -43,5 +55,8 @@ private:
     int m_GoldIcon;
     float m_Speed;
     int m_HP;
+    float m_MaxHP;
     int TransFlag;
+    State m_State = State::NORMAL;
+    int m_DamageTimer = 0;
 };

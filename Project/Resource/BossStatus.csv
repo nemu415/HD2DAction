@@ -1,0 +1,6 @@
+﻿EnemyID,Name,Level,HP,Attack,Speed,Gold
+1,Eihort,5,250,10,0.05,50
+1,Eihort,15,500,20,0.05,50
+1,Eihort,25,750,30,0.05,50
+1,Eihort,35,1000,40,0.05,50
+1,Eihort,45,1250,50,0.05,50

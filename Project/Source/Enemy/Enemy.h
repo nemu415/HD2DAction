@@ -20,7 +20,6 @@ public:
     Enemy();
     ~Enemy();
 
-    // Excel の enemyID と level を使って初期化
     void Init(int enemyID, int level);
     void Load();
     void Start();
@@ -29,7 +28,7 @@ public:
     void Draw();
     void Fin();
 
-    // Getter
+public:
     int GetID() const { return m_EnemyID; }
     int GetLevel() const { return m_Level; }
     const std::string& GetName() const { return m_Name; }
@@ -37,6 +36,11 @@ public:
     void Damage(int dmg) { m_HP -= dmg; }
     void SetPos(const VECTOR& pos) { m_Pos = pos; }
     VECTOR GetPos() const { return m_Pos; }
+    
+public:
+    float m_HitRadius;
+    bool IsActive;
+    int m_Gold;
 
 private:
     // Excel で管理するステータス
@@ -48,12 +52,10 @@ private:
     int m_MaxHP;
     int m_Attack;
     float m_Speed;
-    int m_Gold;
 
     // 位置・画像など
     VECTOR m_Pos;
     int m_GrHandleRight;
     int m_GrHandleLeft;
     bool m_IsLeft;
-
 };

@@ -1,7 +1,11 @@
 #include "DxLib.h"
 #include "DeadScene.h"
 #include "SceneManager.h"
+#include "GameScene.h"
 #include "../Input/Input.h"
+#include "../Skill/SkillData.h"
+#include "../Gold/GoldData.h"
+
 
 DeadScene::DeadScene() : SceneBase()
 {
@@ -13,6 +17,8 @@ DeadScene::~DeadScene()
 
 void DeadScene::Init()
 {
+	GoldData::GetInstance()->SetGold(0);
+	SkillData::GetInstance()->ResetSkill();
 }
 
 void DeadScene::Load()
@@ -40,8 +46,9 @@ void DeadScene::Start()
 
 void DeadScene::Step()
 {
-	if (Input::IsTrigger(Input::Key::Z))
+	if (Input::IsTrigger(Input::Key::X))
 	{
+		GameScene::m_StageLevel = 1;
 		SceneManager::GetInstance()->ChangeScene(STAY);
 	}
 }
@@ -58,7 +65,9 @@ void DeadScene::Draw()
 
 	DrawStringToHandle(600, 250, "GameOver", GetColor(255, 0, 0), m_TitleFont);
 
-	DrawStringToHandle(700, 600, "‰‚ß‚©‚çn‚ß‚é", GetColor(255, 255, 255), m_PressFont);
+	DrawStringToHandle(500, 500, "‘S‚Ä‚ÌGold‚ÆSkill‚ğ¸‚Á‚½...", GetColor(255, 255, 255), m_PressFont);
+
+	DrawStringToHandle(600, 600, "X‚Å‰‚ß‚©‚çn‚ß‚é.", GetColor(255, 255, 255), m_PressFont);
 }
 
 void DeadScene::Fin()

@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "../Gold/GoldManager.h"
 #include "../Attack/AttackManager.h"
+#include "../Scene/SceneManager.h"
 
 Player::Player()
 {
@@ -19,7 +20,9 @@ void Player::Init()
 	// 初期化処理
     m_Pos = VGet(0, 0, 0);
     m_Speed = 0.1f;
-    m_HP = 100;
+    m_MaxHP = 100;
+    m_HP = m_MaxHP;
+    m_HitRadius = 0.3f;
 
     m_Gold = GoldData::GetInstance()->GetGold();
 }
@@ -41,6 +44,15 @@ void Player::Start()
 
 void Player::Step()
 {
+    if (m_State == State::DAMAGE)
+    {
+        m_DamageTimer--;
+        if (m_DamageTimer <= 0)
+        {
+            m_State = State::NORMAL;
+        }
+    }
+
     // ゲームのステップ処理
     UpdateInput();
     UpdateMove();
@@ -143,4 +155,36 @@ void Player::AddGold(int g)
 {
     m_Gold += g;
     GoldData::GetInstance()->SetGold(m_Gold);
+}
+
+void Player::OnHitEnemy(const VECTOR& enemyPos)
+{
+    if (m_State != State::NORMAL) return;
+
+    m_State = State::DAMAGE;
+    m_DamageTimer = 30;
+
+
+    m_HP -= 10;
+
+    if (m_HP <= 0)
+    {
+        m_State = State::DEAD;
+        SceneManager::GetInstance()->ChangeScene(SceneType::DEAD);
+        return;
+    }
+}
+
+void Player::DrawHP()
+{
+    const int barWidth = 200;
+    const int barHeight = 20;
+    const int x = 20;
+    const int y = 20;
+
+    float rate = (float)m_HP / m_MaxHP;
+
+    DrawBox(x, y, x + barWidth, y + barHeight, GetColor(0, 0, 0), TRUE);
+    DrawBox(x, y, x + (int)(barWidth * rate), y + barHeight, GetColor(255, 0, 0), TRUE);
+    DrawBox(x, y, x + barWidth, y + barHeight, GetColor(255, 255, 255), FALSE);
 }

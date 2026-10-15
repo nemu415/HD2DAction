@@ -18,6 +18,7 @@ public:
 
 public:
 	static int m_StageLevel;
+
 private:
 	int m_GoldIcon;
 	int m_Background;

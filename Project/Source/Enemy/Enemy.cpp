@@ -37,6 +37,11 @@ void Enemy::Init(int enemyID, int level)
     char fileL[128];
     sprintf_s(fileL, "Data/Enemy/%s_L.png", st.name.c_str());
     m_GrHandleLeft = LoadGraph(fileL);
+
+    m_HitRadius = 0.3f;
+
+    IsActive = true;
+
 }
 
 void Enemy::Load()

@@ -148,6 +148,9 @@
     <ClCompile Include="Source\Collision\CollisionAABB.cpp" />
     <ClCompile Include="Source\Collision\CollisionManager.cpp" />
     <ClCompile Include="Source\Collision\CollisionSphere.cpp" />
+    <ClCompile Include="Source\Enemy\Boss.cpp" />
+    <ClCompile Include="Source\Enemy\BossManager.cpp" />
+    <ClCompile Include="Source\Enemy\BossStatusDB.cpp" />
     <ClCompile Include="Source\Enemy\Enemy.cpp" />
     <ClCompile Include="Source\Enemy\EnemyManager.cpp" />
     <ClCompile Include="Source\Enemy\EnemyStatusDB.cpp" />
@@ -180,6 +183,9 @@
     <ClInclude Include="Source\Collision\CollisionAABB.h" />
     <ClInclude Include="Source\Collision\CollisionManager.h" />
     <ClInclude Include="Source\Collision\CollisionSphere.h" />
+    <ClInclude Include="Source\Enemy\Boss.h" />
+    <ClInclude Include="Source\Enemy\BossManager.h" />
+    <ClInclude Include="Source\Enemy\BossStatusDB.h" />
     <ClInclude Include="Source\Enemy\Enemy.h" />
     <ClInclude Include="Source\Enemy\EnemyManager.h" />
     <ClInclude Include="Source\Enemy\EnemyStatusDB.h" />

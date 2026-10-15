@@ -6,13 +6,12 @@
 #include "../Player/PlayerManager.h"
 #include "../Skill/SkillData.h"
 #include "../Attack/AttackManager.h"
-#include "../Enemy/EnemyManager.h"
-#include "../Enemy/EnemyStatusDB.h"
+#include "../Enemy/BossManager.h"
+#include "../Enemy/BossStatusDB.h"
 #include "../Gold/GoldManager.h"
 #include "../Gold/GoldData.h"
 #include "../Camera/CameraManager.h"
 #include "../Collision/CollisionManager.h"
-int BossScene::m_StageLevel = 1;
 
 BossScene::BossScene() : SceneBase()
 {
@@ -28,9 +27,9 @@ void BossScene::Init()
     FloorManager* FloorManager = FloorManager::GetInstance();
     FloorManager->CreateFloor();
 
-    EnemyManager::CreateInstance();
-    EnemyManager* EnemyManager = EnemyManager::GetInstance();
-    EnemyManager->CreateEnemy(1, 1);
+    BossManager::CreateInstance();
+    BossManager* BossManager = BossManager::GetInstance();
+    BossManager->CreateBoss(1, 1);
 
     PlayerManager::CreateInstance();
     PlayerManager* PlayerManager = PlayerManager::GetInstance();
@@ -47,7 +46,7 @@ void BossScene::Init()
 
     CameraManager::GetInstance()->Init();
     FloorManager::GetInstance()->Init();
-    EnemyManager::GetInstance()->Init();
+    BossManager::GetInstance()->Init();
     PlayerManager::GetInstance()->Init();
     AttackManager::GetInstance()->Init();
 
@@ -81,7 +80,7 @@ void BossScene::Load()
 {
     CameraManager::GetInstance()->Load();
     FloorManager::GetInstance()->Load();
-    EnemyManager::GetInstance()->Load();
+    BossManager::GetInstance()->Load();
     PlayerManager::GetInstance()->Load();
     AttackManager::GetInstance()->Load();
     m_GoldIcon = LoadGraph("Data/Gold/Gold.png");
@@ -96,10 +95,10 @@ void BossScene::Load()
 }
 
 void BossScene::Start()
-{
+{           
     CameraManager::GetInstance()->Start();
     FloorManager::GetInstance()->Start();
-    EnemyManager::GetInstance()->Start();
+    BossManager::GetInstance()->Start();
     PlayerManager::GetInstance()->Start();
 }
 
@@ -107,7 +106,7 @@ void BossScene::Step()
 {
     CameraManager::GetInstance()->Step();
     FloorManager::GetInstance()->Step();
-    EnemyManager::GetInstance()->Step();
+    BossManager::GetInstance()->Step();
     GoldManager::GetInstance()->Step();
     Input::Update();
     PlayerManager::GetInstance()->Step();
@@ -118,7 +117,7 @@ void BossScene::Update()
 {
     CameraManager::GetInstance()->Update();
     FloorManager::GetInstance()->Update();
-    EnemyManager::GetInstance()->Update();
+    BossManager::GetInstance()->Update();
     PlayerManager::GetInstance()->Update();
 }
 
@@ -128,7 +127,7 @@ void BossScene::Draw()
 
     CameraManager::GetInstance()->Draw();
     FloorManager::GetInstance()->Draw();
-    EnemyManager::GetInstance()->Draw();
+    BossManager::GetInstance()->Draw();
     GoldManager::GetInstance()->Draw();
     PlayerManager::GetInstance()->Draw();
     AttackManager::GetInstance()->Draw();
@@ -142,7 +141,7 @@ void BossScene::Fin()
 {
     CameraManager::GetInstance()->Fin();
     FloorManager::GetInstance()->Fin();
-    EnemyManager::GetInstance()->Fin();
+    BossManager::GetInstance()->Fin();
     PlayerManager::GetInstance()->Fin();
     AttackManager::GetInstance()->Fin();
 

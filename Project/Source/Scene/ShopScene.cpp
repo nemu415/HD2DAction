@@ -109,7 +109,7 @@ void ShopScene::Draw()
 
 		if (SkillData::GetInstance()->HasSkill(i))
 		{
-			DrawStringToHandle(x, y + 290, "w“üÏ‚İ", GetColor(0, 255, 0), m_ShopFont);
+			DrawStringToHandle(x + 50, y + 270, "w“üÏ‚İ", GetColor(0, 255, 0), m_ShopFont);
 		}
 	}
 }

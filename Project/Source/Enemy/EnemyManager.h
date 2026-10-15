@@ -46,6 +46,9 @@ public:
     void CreateEnemy(int enemyID, int level);
     const std::vector<Enemy*>& GetEnemies() const { return m_Enemies; }
 
+public:
+    void CheckHitPlayer();
+
 private:
     static EnemyManager* m_Instance;
     std::vector<Enemy*> m_Enemies;

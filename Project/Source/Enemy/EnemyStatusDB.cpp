@@ -60,7 +60,7 @@ bool EnemyStatusDB::Load(const char* filename)
 
 EnemyStatus EnemyStatusDB::Get(int enemyID, int level)
 {
-    int realLevel = level + GameScene::m_StageLevel;
+    int realLevel = GameScene::m_StageLevel;
 
     EnemyStatus* best = nullptr;
 
@@ -85,7 +85,7 @@ EnemyStatus EnemyStatusDB::Get(int enemyID, int level)
     // 見つからないときはデフォルト
     EnemyStatus empty;
     empty.enemyID = enemyID;
-    empty.level = realLevel;
+    empty.level = level;
     empty.name = "Unknown";
     empty.hp = 1;
     empty.attack = 1;

@@ -1,6 +1,7 @@
 #include "DxLib.h"
 #include "Input/Input.h"
-#include "Enemy/EnemyStatusDB.h"	
+#include "Enemy/EnemyStatusDB.h"
+#include "Enemy/BossStatusDB.h"
 #include "Collision/CollisionManager.h"
 #include "Scene/SceneManager.h"
 #include "MyMath/MyMath.h"
@@ -37,6 +38,9 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
 	EnemyStatusDB::CreateInstance();
 	EnemyStatusDB::GetInstance()->Load("Resource/EnemyStatus.csv");
 
+	BossStatusDB::CreateInstance();
+	BossStatusDB::GetInstance()->Load("Resource/BossStatus.csv");
+
 	CollisionManager::CreateInstance();
 
 	// ゲームのメインループ
@@ -72,6 +76,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
 
 	SceneManager::DeleteInstance();
 	EnemyStatusDB::DeleteInstance();
+	BossStatusDB::DeleteInstance();
 	CollisionManager::DeleteInstance();
 
 	DxLib_End();				// ＤＸライブラリ使用の終了処理

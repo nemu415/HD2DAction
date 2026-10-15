@@ -39,7 +39,7 @@ void Gold::Step()
 
     if (dist < 0.8f)
     {
-        PlayerManager::GetInstance()->GetPlayer()->AddGold(m_Amount);
+        GoldData::GetInstance()->SetGold(GoldData::GetInstance()->GetGold() + m_Amount);
         m_IsDead = true;
     }
 }

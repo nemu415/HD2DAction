@@ -16,6 +16,11 @@ public:
         m_Skills.push_back(skillId);
     }
 
+    void ResetSkill()
+    {
+        m_Skills.clear();
+    }
+
     bool HasSkill(int skillId)
     {
         return std::find(m_Skills.begin(), m_Skills.end(), skillId) != m_Skills.end();

@@ -14,6 +14,7 @@
 #include "../Camera/Camera.h"
 #include "../Collision/CollisionManager.h"
 int GameScene::m_StageLevel = 1;
+auto skills = SkillData::GetInstance()->GetSkills();
 
 GameScene::GameScene() : SceneBase()
 {
@@ -55,8 +56,6 @@ void GameScene::Init()
     SetUseZBuffer3D(TRUE);
     SetWriteZBuffer3D(TRUE);
 
-    auto skills = SkillData::GetInstance()->GetSkills();
-
     for (int skill : skills)
     {
         if (skill == 1)
@@ -93,6 +92,25 @@ void GameScene::Load()
         4,
         DX_FONTTYPE_ANTIALIASING
     );
+
+    for (int skill : skills)
+    {
+        if (skill == 1)
+        {
+        }
+        else if (skill == 2)
+        {
+        }
+        else if (skill == 3)
+        {
+        }
+        else if (skill == 4)
+        {
+        }
+        else if (skill == 5)
+        {
+        }
+    }
 }
 
 void GameScene::Start()
@@ -115,9 +133,29 @@ void GameScene::Step()
     CameraManager::GetInstance()->Step();
 	FloorManager::GetInstance()->Step();
     EnemyManager::GetInstance()->Step();
+    EnemyManager::GetInstance()->CheckHitPlayer();
     GoldManager::GetInstance()->Step();
     PlayerManager::GetInstance()->Step();
     AttackManager::GetInstance()->Step();
+
+    for (int skill : skills)
+    {
+        if (skill == 1)
+        {
+        }
+        else if (skill == 2)
+        {
+        }
+        else if (skill == 3)
+        {
+        }
+        else if (skill == 4)
+        {
+        }
+        else if (skill == 5)
+        {
+        }
+    }
 }
 
 void GameScene::Update()
@@ -137,10 +175,30 @@ void GameScene::Draw()
     EnemyManager::GetInstance()->Draw();
     GoldManager::GetInstance()->Draw();
     PlayerManager::GetInstance()->Draw();
+    PlayerManager::GetInstance()->GetPlayer()->DrawHP();
     AttackManager::GetInstance()->Draw();
     int gold = GoldData::GetInstance()->GetGold();
     DrawGraph(20, 30, m_GoldIcon, TRUE);
     DrawFormatStringToHandle(80, 35, GetColor(255, 255, 0), m_PressFont, "%d", gold);
+
+    for (int skill : skills)
+    {
+        if (skill == 1)
+        {
+        }
+        else if (skill == 2)
+        {
+        }
+        else if (skill == 3)
+        {
+        }
+        else if (skill == 4)
+        {
+        }
+        else if (skill == 5)
+        {
+        }
+    }
 
 }
 
@@ -154,4 +212,23 @@ void GameScene::Fin()
 
     SetUseZBuffer3D(FALSE);
     SetWriteZBuffer3D(FALSE);
+
+    for (int skill : skills)
+    {
+        if (skill == 1)
+        {
+        }
+        else if (skill == 2)
+        {
+        }
+        else if (skill == 3)
+        {
+        }
+        else if (skill == 4)
+        {
+        }
+        else if (skill == 5)
+        {
+        }
+    }
 }

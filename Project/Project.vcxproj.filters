@@ -129,6 +129,15 @@
     <ClCompile Include="Source\Scene\BossScene.cpp">
       <Filter>Source\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Enemy\Boss.cpp">
+      <Filter>Source\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Enemy\BossManager.cpp">
+      <Filter>Source\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Enemy\BossStatusDB.cpp">
+      <Filter>Source\Enemy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Scene\ClearScene.h">
@@ -226,6 +235,15 @@
     </ClInclude>
     <ClInclude Include="Source\Scene\BossScene.h">
       <Filter>Source\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Enemy\Boss.h">
+      <Filter>Source\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Enemy\BossManager.h">
+      <Filter>Source\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Enemy\BossStatusDB.h">
+      <Filter>Source\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

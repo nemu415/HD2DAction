@@ -32,7 +32,7 @@ void EnemyManager::Init()
     m_Enemies.clear();
 
     m_SpawnTimer = 0.0f;
-    m_SpawnInterval = 5.0f;
+    m_SpawnInterval = 2.5f;
     m_KillCount = 0;
     m_KillGoal = 1;
     m_StayTimer = 0.0f;
@@ -107,7 +107,7 @@ void EnemyManager::Update()
             {
                 if (e->IsDead())
                 {
-                    GoldManager::GetInstance()->AddGold(e->GetPos(), 10);
+                    GoldManager::GetInstance()->AddGold(e->GetPos(), e->m_Gold);
                     m_KillCount++;
                     delete e;
 
@@ -122,8 +122,8 @@ void EnemyManager::Update()
     if (m_KillCount >= m_KillGoal)
     {
         m_StayTimer += 1.0f / 60.0f;
-        
-        if (m_StayTimer > 5.0f)
+
+        if (m_StayTimer > 3.0f)
         {
             SceneManager::GetInstance()->ChangeScene(SceneType::CLEAR);
         }
@@ -152,8 +152,10 @@ void EnemyManager::Fin()
     m_Enemies.clear();
 }
 
+
 void EnemyManager::SpawnEnemy(int enemyID)
 {
+    // Player‚ÌˆÊ’u‚ðŽQÆ‚µ‚Ä‹ß‚Ã‚¢‚Ä‚­‚é
     auto player = PlayerManager::GetInstance()->GetPlayer();
     VECTOR pPos = player->GetPos();
 
@@ -180,11 +182,41 @@ void EnemyManager::SpawnRandomEnemy()
     // í‚Éo‚é“G
     pool.push_back(1); // DeepOnes
 
+    // [“x2‚©‚ç
     if (stage >= 2)
         pool.push_back(2); // Shoggoth
+
+    // [“x3‚©‚ç
+    if (stage >= 3)
+        pool.push_back(3); // Ghoul
+
 
     int enemyID = pool[rand() % pool.size()];
 
     SpawnEnemy(enemyID);
 }
+
+void EnemyManager::CheckHitPlayer()
+{
+
+    Player* p = PlayerManager::GetInstance()->GetPlayer();
+    VECTOR pPos = p->GetPos();
+
+    for (auto& e : m_Enemies)
+    {
+        if (!e->IsActive) continue;
+
+        VECTOR ePos = e->GetPos();
+
+        float dx = pPos.x - ePos.x;
+        float dz = pPos.z - ePos.z;
+        float dist = sqrtf(dx * dx + dz * dz);
+
+        if (dist < p->m_HitRadius + e->m_HitRadius)
+        {
+            p->OnHitEnemy(ePos);
+        }
+    }
+}
+
 
