@@ -40,11 +40,12 @@ private:
     float m_Speed;
 
     bool m_IsDead;
-
+    bool m_IsLeft;
     int m_LifeTimer;
     int m_LifeTime;
 
     float m_HitRadius;
 
-    int m_GrHandle;
+    int m_GrHandleLeft;
+    int m_GrHandleRight;
 };

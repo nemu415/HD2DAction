@@ -119,10 +119,8 @@ void MidBossManager::Update()
 {
     for (auto& boss : m_MidBosses)        
         boss->Update();
-    m_MidBosses.erase(
-        std::remove_if(
-            m_MidBosses.begin(),
-            m_MidBosses.end(),
+
+    m_MidBosses.erase(std::remove_if(m_MidBosses.begin(),m_MidBosses.end(),
             [this](MidBoss* boss)
             {
                 if (boss->IsDead())

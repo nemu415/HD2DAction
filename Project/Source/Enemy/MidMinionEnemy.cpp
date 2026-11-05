@@ -13,21 +13,18 @@ MidMinionEnemy::~MidMinionEnemy()
 void MidMinionEnemy::Init()
 {
     m_HP = 1;
-
     m_Speed = 0.08f;
-
     m_IsDead = false;
-
+    m_IsLeft = false;
     m_LifeTimer = 0;
     m_LifeTime = 300;
-
     m_HitRadius = 0.4f;
 }
 
 void MidMinionEnemy::Load()
 {
-    m_GrHandle =
-        LoadGraph("Data/Boss/EihortKids_L.png");
+    m_GrHandleLeft = LoadGraph("Data/Boss/EihortKids_L.png");
+    m_GrHandleRight = LoadGraph("Data/Boss/EihortKids_R.png");
 }
 
 void MidMinionEnemy::Step()
@@ -51,6 +48,8 @@ void MidMinionEnemy::Step()
 
         m_Pos.x += dx * m_Speed;
         m_Pos.z += dz * m_Speed;
+
+        m_IsLeft = (dx < 0);
     }
 
     m_LifeTimer++;
@@ -63,19 +62,15 @@ void MidMinionEnemy::Step()
 
 void MidMinionEnemy::Draw()
 {
-    DrawBillboard3D(
-        m_Pos,
-        0.5f,
-        0.5f,
-        1.5f,
-        0.0f,
-        m_GrHandle,
-        TRUE);
+    int handle = m_IsLeft ? m_GrHandleLeft : m_GrHandleRight;
+
+    DrawBillboard3D(m_Pos, 0.5f, 0.5f, 2.0f, 0.0f, handle, TRUE);
 }
 
 void MidMinionEnemy::Fin()
 {
-    DeleteGraph(m_GrHandle);
+    DeleteGraph(m_GrHandleLeft);
+    DeleteGraph(m_GrHandleRight);
 }
 
 void MidMinionEnemy::Kill()

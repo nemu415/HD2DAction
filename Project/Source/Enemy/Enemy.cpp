@@ -28,12 +28,12 @@ void Enemy::Init(int enemyID, int level)
     m_Speed = st.speed;
     m_Gold = st.gold;
 
-    // ‰EŒü‚«‰æ‘œ
+    // ‰EŒü‚«
     char fileR[128];
     sprintf_s(fileR, "Data/Enemy/%s_R.png", st.name.c_str());
     m_GrHandleRight = LoadGraph(fileR);
 
-    // ¶Œü‚«‰æ‘œ
+    // ¶Œü‚«
     char fileL[128];
     sprintf_s(fileL, "Data/Enemy/%s_L.png", st.name.c_str());
     m_GrHandleLeft = LoadGraph(fileL);
