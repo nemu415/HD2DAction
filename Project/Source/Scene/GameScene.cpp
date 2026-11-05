@@ -13,7 +13,7 @@
 #include "../Camera/CameraManager.h"
 #include "../Camera/Camera.h"
 #include "../Collision/CollisionManager.h"
-int GameScene::m_StageLevel = 1;
+int GameScene::m_StageLevel = 5;
 auto skills = SkillData::GetInstance()->GetSkills();
 
 GameScene::GameScene() : SceneBase()
@@ -178,8 +178,8 @@ void GameScene::Draw()
     PlayerManager::GetInstance()->GetPlayer()->DrawHP();
     AttackManager::GetInstance()->Draw();
     int gold = GoldData::GetInstance()->GetGold();
-    DrawGraph(20, 30, m_GoldIcon, TRUE);
-    DrawFormatStringToHandle(80, 35, GetColor(255, 255, 0), m_PressFont, "%d", gold);
+    DrawGraph(15, 5, m_GoldIcon, TRUE);
+    DrawFormatStringToHandle(70, 10, GetColor(255, 255, 0), m_PressFont, "%d", gold);
 
     for (int skill : skills)
     {

@@ -63,8 +63,8 @@ void StayScene::Draw()
 	DrawStringToHandle(600, 500, "Z‚ÅƒQ[ƒ€‚ðI—¹‚·‚é", GetColor(255, 255, 255), m_PressFont);
 
 	int gold = GoldData::GetInstance()->GetGold();
-	DrawGraph(20, 30, m_GoldIcon, TRUE);
-	DrawFormatStringToHandle(80, 35, GetColor(255, 255, 0), m_PressFont, "%d", gold);
+	DrawGraph(15, 5, m_GoldIcon, TRUE);
+	DrawFormatStringToHandle(70, 10, GetColor(255, 255, 0), m_PressFont, "%d", gold);
 }
 
 void StayScene::Fin()

@@ -178,13 +178,14 @@ void Player::OnHitEnemy(const VECTOR& enemyPos)
 void Player::DrawHP()
 {
     const int barWidth = 200;
-    const int barHeight = 20;
-    const int x = 20;
-    const int y = 20;
+    const int barHeight = 30;
+    const int x = 150;
+    const int y = 30;
 
     float rate = (float)m_HP / m_MaxHP;
 
     DrawBox(x, y, x + barWidth, y + barHeight, GetColor(0, 0, 0), TRUE);
     DrawBox(x, y, x + (int)(barWidth * rate), y + barHeight, GetColor(255, 0, 0), TRUE);
     DrawBox(x, y, x + barWidth, y + barHeight, GetColor(255, 255, 255), FALSE);
+    DrawFormatString(x, y - 25, GetColor(255, 255, 255), "Player");
 }

@@ -6,7 +6,7 @@
 #include "../Player/PlayerManager.h"
 #include "../Skill/SkillData.h"
 #include "../Attack/AttackManager.h"
-#include "../Enemy/BossManager.h"
+#include "../Enemy/MidBossManager.h"
 #include "../Enemy/BossStatusDB.h"
 #include "../Gold/GoldManager.h"
 #include "../Gold/GoldData.h"
@@ -27,9 +27,10 @@ void BossScene::Init()
     FloorManager* FloorManager = FloorManager::GetInstance();
     FloorManager->CreateFloor();
 
-    BossManager::CreateInstance();
-    BossManager* BossManager = BossManager::GetInstance();
-    BossManager->CreateBoss(1, 1);
+    MidBossManager::CreateInstance();
+    MidBossManager* BossManager = MidBossManager::GetInstance();
+    MidBossManager::GetInstance()->Init();
+    BossManager->CreateMidBoss(1,1);
 
     PlayerManager::CreateInstance();
     PlayerManager* PlayerManager = PlayerManager::GetInstance();
@@ -37,7 +38,7 @@ void BossScene::Init()
 
     AttackManager::CreateInstance();
     AttackManager* AttackManager = AttackManager::GetInstance();
-
+    
     CameraManager::CreateInstance();
     CameraManager* CameraManager = CameraManager::GetInstance();
     CameraManager->CreateCamera(CAMERA);
@@ -46,7 +47,6 @@ void BossScene::Init()
 
     CameraManager::GetInstance()->Init();
     FloorManager::GetInstance()->Init();
-    BossManager::GetInstance()->Init();
     PlayerManager::GetInstance()->Init();
     AttackManager::GetInstance()->Init();
 
@@ -80,7 +80,7 @@ void BossScene::Load()
 {
     CameraManager::GetInstance()->Load();
     FloorManager::GetInstance()->Load();
-    BossManager::GetInstance()->Load();
+    MidBossManager::GetInstance()->Load();
     PlayerManager::GetInstance()->Load();
     AttackManager::GetInstance()->Load();
     m_GoldIcon = LoadGraph("Data/Gold/Gold.png");
@@ -98,7 +98,7 @@ void BossScene::Start()
 {           
     CameraManager::GetInstance()->Start();
     FloorManager::GetInstance()->Start();
-    BossManager::GetInstance()->Start();
+    MidBossManager::GetInstance()->Start();
     PlayerManager::GetInstance()->Start();
 }
 
@@ -106,7 +106,7 @@ void BossScene::Step()
 {
     CameraManager::GetInstance()->Step();
     FloorManager::GetInstance()->Step();
-    BossManager::GetInstance()->Step();
+    MidBossManager::GetInstance()->Step();
     GoldManager::GetInstance()->Step();
     Input::Update();
     PlayerManager::GetInstance()->Step();
@@ -117,7 +117,7 @@ void BossScene::Update()
 {
     CameraManager::GetInstance()->Update();
     FloorManager::GetInstance()->Update();
-    BossManager::GetInstance()->Update();
+    MidBossManager::GetInstance()->Update();
     PlayerManager::GetInstance()->Update();
 }
 
@@ -127,13 +127,14 @@ void BossScene::Draw()
 
     CameraManager::GetInstance()->Draw();
     FloorManager::GetInstance()->Draw();
-    BossManager::GetInstance()->Draw();
+    MidBossManager::GetInstance()->Draw();
     GoldManager::GetInstance()->Draw();
     PlayerManager::GetInstance()->Draw();
+    PlayerManager::GetInstance()->GetPlayer()->DrawHP();
     AttackManager::GetInstance()->Draw();
     int gold = GoldData::GetInstance()->GetGold();
-    DrawGraph(20, 30, m_GoldIcon, TRUE);
-    DrawFormatStringToHandle(80, 35, GetColor(255, 255, 0), m_PressFont, "%d", gold);
+    DrawGraph(15, 5, m_GoldIcon, TRUE);
+    DrawFormatStringToHandle(70, 10, GetColor(255, 255, 0), m_PressFont, "%d", gold);
 
 }
 
@@ -141,7 +142,7 @@ void BossScene::Fin()
 {
     CameraManager::GetInstance()->Fin();
     FloorManager::GetInstance()->Fin();
-    BossManager::GetInstance()->Fin();
+    MidBossManager::GetInstance()->Fin();
     PlayerManager::GetInstance()->Fin();
     AttackManager::GetInstance()->Fin();
 

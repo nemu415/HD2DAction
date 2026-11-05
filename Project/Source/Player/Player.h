@@ -36,7 +36,10 @@ public:
     void OnHitEnemy(const VECTOR& enemyPos);
     void DrawHP();
     float m_HitRadius;
-
+    float GetHitRadius() const
+    {
+        return m_HitRadius;
+    }
 private:
     void UpdateInput();          // ‘€ì“ü—Í
     void UpdateMove();           // ˆÚ“®XV

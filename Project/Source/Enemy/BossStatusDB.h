@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include <string>
-#include "Boss.h"
+#include "MidBoss.h"
 
 class BossStatusDB
 {
