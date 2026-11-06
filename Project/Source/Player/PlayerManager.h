@@ -1,5 +1,7 @@
 #pragma once
 #include "Player.h"
+#include <vector>
+#include "../Attack/AttackBase.h"
 
 class Player;
 
@@ -45,8 +47,13 @@ public:
 public:
     void CreatePlayer();
     Player* GetPlayer() { return m_Player; }
-
+    void SpawnDefultAttack(const VECTOR& pos, bool isLeft);
+    void SpawnBackAttack(const VECTOR& pos, bool isLeft);
+    const std::vector<AttackBase*>& GetAttacks() const { return m_Attacks; };
 private:
     static PlayerManager* m_Instance;
     Player* m_Player;
+    std::vector<AttackBase*> m_Attacks;
+    int m_CooldownDefultAttack;
+    int m_CooldownDefultAttackMax;
 };

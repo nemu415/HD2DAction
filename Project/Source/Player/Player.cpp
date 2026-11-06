@@ -3,6 +3,7 @@
 #include "../Attack/AttackManager.h"
 #include "../Scene/SceneManager.h"
 
+#define TURN_OFFSET (2)
 Player::Player()
 {
     for (int i = 0; i < 4; i++)
@@ -71,7 +72,7 @@ void Player::Draw()
 
     if (m_IsLeft)
     {
-        handle = m_GrHandle[2 + m_AnimIndex];
+        handle = m_GrHandle[m_AnimIndex + TURN_OFFSET];
     }
     else
     {

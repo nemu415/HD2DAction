@@ -5,7 +5,6 @@
 #include "../Floor/FloorManager.h"
 #include "../Player/PlayerManager.h"
 #include "../Skill/SkillData.h"
-#include "../Attack/AttackManager.h"
 #include "../Enemy/MidBossManager.h"
 #include "../Enemy/BossStatusDB.h"
 #include "../Gold/GoldManager.h"
@@ -30,15 +29,12 @@ void BossScene::Init()
     MidBossManager::CreateInstance();
     MidBossManager* BossManager = MidBossManager::GetInstance();
     MidBossManager::GetInstance()->Init();
-    BossManager->CreateMidBoss(1,1);
+    BossManager->RegisterMidBoss(1,1);
 
     PlayerManager::CreateInstance();
     PlayerManager* PlayerManager = PlayerManager::GetInstance();
     PlayerManager->CreatePlayer();
 
-    AttackManager::CreateInstance();
-    AttackManager* AttackManager = AttackManager::GetInstance();
-    
     CameraManager::CreateInstance();
     CameraManager* CameraManager = CameraManager::GetInstance();
     CameraManager->CreateCamera(CAMERA);
@@ -48,31 +44,11 @@ void BossScene::Init()
     CameraManager::GetInstance()->Init();
     FloorManager::GetInstance()->Init();
     PlayerManager::GetInstance()->Init();
-    AttackManager::GetInstance()->Init();
-
+  
     SetUseZBuffer3D(TRUE);
     SetWriteZBuffer3D(TRUE);
 
     auto skills = SkillData::GetInstance()->GetSkills();
-
-    for (int skill : skills)
-    {
-        if (skill == 1)
-        {
-        }
-        else if (skill == 2)
-        {
-        }
-        else if (skill == 3)
-        {
-        }
-        else if (skill == 4)
-        {
-        }
-        else if (skill == 5)
-        {
-        }
-    }
 
 }
 
@@ -82,7 +58,6 @@ void BossScene::Load()
     FloorManager::GetInstance()->Load();
     MidBossManager::GetInstance()->Load();
     PlayerManager::GetInstance()->Load();
-    AttackManager::GetInstance()->Load();
     m_GoldIcon = LoadGraph("Data/Gold/Gold.png");
     m_Background = LoadGraph("Data/Background/Boss.jpg");
 
@@ -110,7 +85,6 @@ void BossScene::Step()
     GoldManager::GetInstance()->Step();
     Input::Update();
     PlayerManager::GetInstance()->Step();
-    AttackManager::GetInstance()->Step();
 }
 
 void BossScene::Update()
@@ -131,7 +105,6 @@ void BossScene::Draw()
     GoldManager::GetInstance()->Draw();
     PlayerManager::GetInstance()->Draw();
     PlayerManager::GetInstance()->GetPlayer()->DrawHP();
-    AttackManager::GetInstance()->Draw();
     int gold = GoldData::GetInstance()->GetGold();
     DrawGraph(15, 5, m_GoldIcon, TRUE);
     DrawFormatStringToHandle(70, 10, GetColor(255, 255, 0), m_PressFont, "%d", gold);
@@ -144,7 +117,6 @@ void BossScene::Fin()
     FloorManager::GetInstance()->Fin();
     MidBossManager::GetInstance()->Fin();
     PlayerManager::GetInstance()->Fin();
-    AttackManager::GetInstance()->Fin();
 
     SetUseZBuffer3D(FALSE);
     SetWriteZBuffer3D(FALSE);

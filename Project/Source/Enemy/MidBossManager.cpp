@@ -1,6 +1,6 @@
 #include "MidBossManager.h"
 #include "MidBoss.h"
-#include "../Attack/AttackManager.h"
+#include "../Player/PlayerManager.h"
 #include "../Scene/SceneManager.h"
 #include "../Scene/GameScene.h"
 #include "../Scene/ClearScene.h"
@@ -37,7 +37,7 @@ void MidBossManager::DeleteInstance()
     m_Instance = nullptr;
 }
 
-void MidBossManager::CreateMidBoss(int bossID,int level)
+void MidBossManager::RegisterMidBoss(int bossID,int level)
 {
     MidBoss* boss =
         new MidBoss;
@@ -91,8 +91,7 @@ void MidBossManager::Step()
         boss->Step();
     }
 
-    auto attackMgr = AttackManager::GetInstance();
-    const auto& attacks = attackMgr->GetAttacks();
+    const auto& attacks = PlayerManager::GetInstance()->GetAttacks();
 
     for (auto boss : m_MidBosses)
     {

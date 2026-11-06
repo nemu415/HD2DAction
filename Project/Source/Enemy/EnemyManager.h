@@ -43,7 +43,7 @@ public:
     void Fin();
     void SpawnRandomEnemy();
     void SpawnEnemy(int enemyID);
-    void CreateEnemy(int enemyID, int level);
+    void RegisterEnemy(int enemyID, int level);
     const std::vector<Enemy*>& GetEnemies() const { return m_Enemies; }
 
 public:

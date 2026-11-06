@@ -5,7 +5,6 @@
 #include "../Floor/FloorManager.h"
 #include "../Player/PlayerManager.h"
 #include "../Skill/SkillData.h"
-#include "../Attack/AttackManager.h"
 #include "../Enemy/EnemyManager.h"
 #include "../Enemy/EnemyStatusDB.h"
 #include "../Gold/GoldManager.h"
@@ -32,14 +31,11 @@ void GameScene::Init()
 
     EnemyManager::CreateInstance();
     EnemyManager* EnemyManager = EnemyManager::GetInstance();
-    EnemyManager->CreateEnemy(1, 1);
+    EnemyManager->RegisterEnemy(1, 1);
 
     PlayerManager::CreateInstance();
     PlayerManager* PlayerManager = PlayerManager::GetInstance();
     PlayerManager->CreatePlayer();
-
-    AttackManager::CreateInstance();
-    AttackManager* AttackManager = AttackManager::GetInstance();
 
     CameraManager::CreateInstance();
     CameraManager* CameraManager = CameraManager::GetInstance();
@@ -51,30 +47,9 @@ void GameScene::Init()
     FloorManager::GetInstance()->Init();
     EnemyManager::GetInstance()->Init();
     PlayerManager::GetInstance()->Init();
-	AttackManager::GetInstance()->Init();
 
     SetUseZBuffer3D(TRUE);
     SetWriteZBuffer3D(TRUE);
-
-    for (int skill : skills)
-    {
-        if (skill == 1)
-        {
-        }
-        else if (skill == 2)
-        {
-        }
-        else if (skill == 3)
-        {
-        }
-        else if (skill == 4)
-        {
-        }
-        else if (skill == 5)
-        {
-        }
-    }
-
 }
 
 void GameScene::Load()
@@ -83,7 +58,6 @@ void GameScene::Load()
     FloorManager::GetInstance()->Load();
     EnemyManager::GetInstance()->Load();
     PlayerManager::GetInstance()->Load();
-    AttackManager::GetInstance()->Load();
     m_GoldIcon = LoadGraph("Data/Gold/Gold.png");
     m_Background = LoadGraph("Data/Background/Game.jpg");
     m_PressFont = CreateFontToHandle(
@@ -92,25 +66,6 @@ void GameScene::Load()
         4,
         DX_FONTTYPE_ANTIALIASING
     );
-
-    for (int skill : skills)
-    {
-        if (skill == 1)
-        {
-        }
-        else if (skill == 2)
-        {
-        }
-        else if (skill == 3)
-        {
-        }
-        else if (skill == 4)
-        {
-        }
-        else if (skill == 5)
-        {
-        }
-    }
 }
 
 void GameScene::Start()
@@ -136,26 +91,6 @@ void GameScene::Step()
     EnemyManager::GetInstance()->CheckHitPlayer();
     GoldManager::GetInstance()->Step();
     PlayerManager::GetInstance()->Step();
-    AttackManager::GetInstance()->Step();
-
-    for (int skill : skills)
-    {
-        if (skill == 1)
-        {
-        }
-        else if (skill == 2)
-        {
-        }
-        else if (skill == 3)
-        {
-        }
-        else if (skill == 4)
-        {
-        }
-        else if (skill == 5)
-        {
-        }
-    }
 }
 
 void GameScene::Update()
@@ -176,30 +111,9 @@ void GameScene::Draw()
     GoldManager::GetInstance()->Draw();
     PlayerManager::GetInstance()->Draw();
     PlayerManager::GetInstance()->GetPlayer()->DrawHP();
-    AttackManager::GetInstance()->Draw();
     int gold = GoldData::GetInstance()->GetGold();
     DrawGraph(15, 5, m_GoldIcon, TRUE);
     DrawFormatStringToHandle(70, 10, GetColor(255, 255, 0), m_PressFont, "%d", gold);
-
-    for (int skill : skills)
-    {
-        if (skill == 1)
-        {
-        }
-        else if (skill == 2)
-        {
-        }
-        else if (skill == 3)
-        {
-        }
-        else if (skill == 4)
-        {
-        }
-        else if (skill == 5)
-        {
-        }
-    }
-
 }
 
 void GameScene::Fin()
@@ -208,27 +122,7 @@ void GameScene::Fin()
     FloorManager::GetInstance()->Fin();
     EnemyManager::GetInstance()->Fin();
     PlayerManager::GetInstance()->Fin();
-    AttackManager::GetInstance()->Fin();
 
     SetUseZBuffer3D(FALSE);
     SetWriteZBuffer3D(FALSE);
-
-    for (int skill : skills)
-    {
-        if (skill == 1)
-        {
-        }
-        else if (skill == 2)
-        {
-        }
-        else if (skill == 3)
-        {
-        }
-        else if (skill == 4)
-        {
-        }
-        else if (skill == 5)
-        {
-        }
-    }
 }

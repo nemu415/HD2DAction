@@ -140,7 +140,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\Attack\AttackBase.cpp" />
-    <ClCompile Include="Source\Attack\AttackManager.cpp" />
     <ClCompile Include="Source\Attack\DefultAttack.cpp" />
     <ClCompile Include="Source\Camera\Camera.cpp" />
     <ClCompile Include="Source\Camera\CameraBase.cpp" />
@@ -176,7 +175,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Attack\AttackBase.h" />
-    <ClInclude Include="Source\Attack\AttackManager.h" />
     <ClInclude Include="Source\Attack\DefultAttack.h" />
     <ClInclude Include="Source\Camera\Camera.h" />
     <ClInclude Include="Source\Camera\CameraBase.h" />

@@ -19,7 +19,7 @@ public:
     void Fin();
 
     void SpawnDefultAttack(const VECTOR& pos, bool isLeft);
-
+    void SpawnBackAttack(const VECTOR& pos, bool isLeft);
     const std::vector<AttackBase*>& GetAttacks() const { return m_Attacks; }
 
 private:

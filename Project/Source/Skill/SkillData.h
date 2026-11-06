@@ -1,6 +1,16 @@
 #pragma once
 #include <vector>
 
+enum SkillID
+{
+    SKILL_HAMMER = 0,
+    SKILL_FIRE_SWORD = 1,
+    SKILL_IRON_SWORD = 2,
+    SKILL_PISTOL = 3,
+    SKILL_ARROW = 4,
+};
+
+
 class SkillData
 {
 public:

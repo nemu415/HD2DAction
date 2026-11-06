@@ -1,5 +1,6 @@
 #include "AttackManager.h"
 #include "DefultAttack.h"
+#include "../Skill/SkillData.h"
 #include "../Player/PlayerManager.h"
 
 AttackManager* AttackManager::m_Instance = nullptr;
@@ -56,6 +57,12 @@ void AttackManager::Step()
     if (m_CooldownDefultAttack <= 0)
     {
         SpawnDefultAttack(pPos, isLeft);
+
+        if (SkillData::GetInstance()->HasSkill(2))
+        {
+            SpawnBackAttack(pPos, isLeft);
+        }
+
         m_CooldownDefultAttack = m_CooldownDefultAttackMax;
     }
 
@@ -104,6 +111,24 @@ void AttackManager::SpawnDefultAttack(const VECTOR& pos, bool isLeft)
 
     atk->SetPos(spawnPos);
     atk->SetLeft(isLeft);
+    atk->SetPlayer(PlayerManager::GetInstance()->GetPlayer());
+
+    m_Attacks.push_back(atk);
+}
+
+void AttackManager::SpawnBackAttack(const VECTOR& pos,bool isLeft)
+{
+    DefultAttack* atk = new DefultAttack;
+
+    atk->Init();
+    atk->Load();
+
+    VECTOR spawnPos = pos;
+
+    spawnPos.x += isLeft ? 1.0f : -1.0f;
+
+    atk->SetPos(spawnPos);
+    atk->SetLeft(!isLeft);
     atk->SetPlayer(PlayerManager::GetInstance()->GetPlayer());
 
     m_Attacks.push_back(atk);

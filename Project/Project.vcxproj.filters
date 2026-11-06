@@ -72,9 +72,6 @@
     <ClCompile Include="Source\Attack\AttackBase.cpp">
       <Filter>Source\Attack</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Attack\AttackManager.cpp">
-      <Filter>Source\Attack</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Attack\DefultAttack.cpp">
       <Filter>Source\Attack</Filter>
     </ClCompile>
@@ -174,9 +171,6 @@
       <Filter>Source\Player</Filter>
     </ClInclude>
     <ClInclude Include="Source\Attack\AttackBase.h">
-      <Filter>Source\Attack</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Attack\AttackManager.h">
       <Filter>Source\Attack</Filter>
     </ClInclude>
     <ClInclude Include="Source\Attack\DefultAttack.h">

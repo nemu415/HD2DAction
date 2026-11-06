@@ -1,7 +1,6 @@
 #include "EnemyManager.h"
 #include "Enemy.h"
 #include "../Player/PlayerManager.h"
-#include "../Attack/AttackManager.h"
 #include "../Gold/GoldManager.h"
 #include "../Scene/SceneManager.h"
 #include "../Scene/GameScene.h"
@@ -18,7 +17,7 @@ EnemyManager::~EnemyManager()
 {
 }
 
-void EnemyManager::CreateEnemy(int enemyID, int level)
+void EnemyManager::RegisterEnemy(int enemyID, int level)
 {
     Enemy* e = new Enemy;
     e->Init(enemyID, level);
@@ -71,8 +70,7 @@ void EnemyManager::Step()
         m_SpawnTimer = 0.0f;
     }
 
-    auto attackMgr = AttackManager::GetInstance();
-    const auto& attacks = attackMgr->GetAttacks();
+    const auto& attacks =PlayerManager::GetInstance() -> GetAttacks();
 
     for (auto enemy : m_Enemies)
     {

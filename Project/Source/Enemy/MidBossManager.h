@@ -15,7 +15,7 @@ public:
 
 public:
 
-    void CreateMidBoss(
+    void RegisterMidBoss(
         int bossID,
         int level);
 
